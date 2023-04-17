@@ -6,5 +6,6 @@ two-gb-swapfile-create.sh  - creates a persisting 2GB swapfile on /
 
 If you want all of them in '/usr/local/bin' you can issue this command from your client:
 
+```
 curl -Sks https://raw.githubusercontent.com/dvosburg/susemanager-contributions/master/scripts/get-suma-scripts.sh > /bin/bash
-
+```
