@@ -1,4 +1,4 @@
-# Here are some scripts you might find useful for SUSE Manager clients, expecially when building labs or demos
+# Here are some scripts you might find useful for SUSE Manager clients, especially when building labs or demos
 
 * machine-id-refresh.sh  - Removes and sets the /etc/machine-id using dbus and systemd tools
 * prep-and-clean.sh   - removes either salt-minion or venv-salt-minion if installed, and sets hostname; works on SUSE, Debian or RH-derivatives
