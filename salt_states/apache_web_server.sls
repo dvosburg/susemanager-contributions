@@ -26,7 +26,7 @@ disable_firewall:
 
 enforce_desired_index_html:
   file.managed:
-    - source: salt://manager_org_4/apache_web_server/srv/www/htdocs/index.html
+    - source: salt://manager_org_1/apache_web_server/srv/www/htdocs/index.html
 {%- if grains['os_family'] == 'Suse' %}
     - name: /srv/www/htdocs/index.html
 {%- else %}
