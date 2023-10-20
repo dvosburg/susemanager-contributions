@@ -8,7 +8,7 @@ In future this will expand to multiple containers and be offered to run on k8s. 
 #### Server requirements
 Uyuni server runs on a single container host with the following requirements:
 
-openSUSE Leap 15.4 or 15.4, Leap Micro 5.4
+openSUSE Leap 15.4 or 15.5, Leap Micro 5.4
 16 GB RAM (minimum)
 10GB root volume storage (minimum)
 
