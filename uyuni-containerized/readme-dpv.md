@@ -194,8 +194,7 @@ podman:
     - 8001:8001
     - ""
 ```
-
-###Setting up Uyuni for the first time
+## Setting Up Uyuni for the First Time
 
 Here is a basic workflow example for setting up Uyuni in containers for the first time.
 
