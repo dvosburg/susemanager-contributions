@@ -11,5 +11,5 @@ ubuntu_grub_directory_alias:
     - name: /boot/grub2
     - target: /boot/grub
     - onlyif:
-      - test -f /boot/grub
+      - test -d /boot/grub
       - test ! -L /boot/grub2
