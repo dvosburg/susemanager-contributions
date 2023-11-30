@@ -212,8 +212,8 @@ Here is a basic workflow example for setting up Uyuni in containers for the firs
     ```
 	zypper ar -f https://download.opensuse.org/repositories/systemsmanagement:/Uyuni:/Stable:/ContainerUtils/SLE-Micro55/systemsmanagement:Uyuni:Stable:ContainerUtils.repo
 	```
- 
 4. Install the necessary packages:
+
 	For Leap 15.5:
     ```
 	zypper in uyunictl uyuniadm
@@ -222,7 +222,8 @@ Here is a basic workflow example for setting up Uyuni in containers for the firs
     For Leap Micro or SLE Micro:
     ```
     transactional-update -n pkg install uyunictl uyuniadm && reboot
-    ```
+    ``` 
+
 5. Install the Uyuni server using the 'uyuniadm' tool
 
      Example using the Master (development) image of Uyuni:
