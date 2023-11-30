@@ -8,7 +8,7 @@ In future this will expand to multiple containers and be offered to run on k8s. 
 #### Server requirements
 Uyuni server runs on a single container host with the following requirements:
 
-openSUSE Leap 15.4 or 15.5, Leap Micro 5.4
+openSUSE Leap 15.5, Leap Micro 5.5, SLE Micro 5.5
 16 GB RAM (minimum)
 10GB root volume storage (minimum)
 
@@ -199,15 +199,30 @@ podman:
 Here is a basic workflow example for setting up Uyuni in containers for the first time.
 
 1. Install the OS and partition the disk as required.
-2. Add the repository for the tools:  
+2. Add the repository for the tools:
+    For Leap 15.5:   
 	```
-	zypper ar -f https://download.opensuse.org/repositories/systemsmanagement:/Uyuni:/Master:/ServerContainer/openSUSE_Leap_15.4/ uyuni-container-tools
+	zypper ar -f https://download.opensuse.org/repositories/systemsmanagement:/Uyuni:/Stable:/ContainerUtils/openSUSE_Leap_15.5/systemsmanagement:Uyuni:Stable:ContainerUtils.repo
 	```
-3. Install the necessary packages:
+    For Leap Micro 15.5:
+        ```
+	zypper ar -f https://download.opensuse.org/repositories/systemsmanagement:/Uyuni:/Stable:/ContainerUtils/openSUSE_Leap_Micro_5.5/systemsmanagement:Uyuni:Stable:ContainerUtils.repo
 	```
+    For SLE Micro 5.5:
+       ```
+	zypper ar -f https://download.opensuse.org/repositories/systemsmanagement:/Uyuni:/Stable:/ContainerUtils/SLE-Micro55/systemsmanagement:Uyuni:Stable:ContainerUtils.repo
+	```
+ 
+4. Install the necessary packages:
+	For Leap 15.5:
+        ```
 	zypper in uyunictl uyuniadm
 	```
-4. Install the Uyuni server using the 'uyuniadm' tool:
+        For Leap Micro or SLE Micro:
+        ```
+        transactional-update -n pkg install uyunictl uyuniadm && reboot
+        ```
+5. Install the Uyuni server using the 'uyuniadm' tool:
 
 Eaample using the Master (development) image of Uyuni:
  ```
