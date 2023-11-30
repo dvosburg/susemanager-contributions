@@ -209,7 +209,7 @@ Here is a basic workflow example for setting up Uyuni in containers for the firs
 	zypper ar -f https://download.opensuse.org/repositories/systemsmanagement:/Uyuni:/Stable:/ContainerUtils/openSUSE_Leap_Micro_5.5/systemsmanagement:Uyuni:Stable:ContainerUtils.repo
 	```
     For SLE Micro 5.5:
-       ```
+        ```
 	zypper ar -f https://download.opensuse.org/repositories/systemsmanagement:/Uyuni:/Stable:/ContainerUtils/SLE-Micro55/systemsmanagement:Uyuni:Stable:ContainerUtils.repo
 	```
  
