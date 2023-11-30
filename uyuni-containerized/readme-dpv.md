@@ -207,11 +207,17 @@ Here is a basic workflow example for setting up Uyuni in containers for the firs
 	```
 	zypper in uyunictl uyuniadm
 	```
-4. Install the Uyuni server as outlined above:
+4. Install the Uyuni server using the 'uyuniadm' tool:
 
+Eaample using the Master (development) image of Uyuni:
  ```
 uyuniadm install podman uyuni-container.site.com --ssl-city Anderson --ssl-country US --ssl-state Indiana --tz 'America/Detroit' --image registry.opensuse.org/systemsmanagement/uyuni/master/containers/uyuni/server 
 ```
+Example using the latest supported release of Uyuni:
+```
+uyuniadm install podman uyuni-container.site.com --ssl-city Anderson --ssl-country US --ssl-state Indiana --tz 'America/Detroit' --image registry.opensuse.org/uyuni/server
+```
+
 5. Log in to the webUI and set your Organization name, login user, and password.  In this example, the user is 'admin' and the password 'susemanager'
 
 6. Add some channels that might interest you.  These are examples that do not require special SCC credentials:
