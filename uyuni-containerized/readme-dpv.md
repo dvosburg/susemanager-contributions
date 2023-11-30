@@ -200,38 +200,39 @@ Here is a basic workflow example for setting up Uyuni in containers for the firs
 
 1. Install the OS and partition the disk as required.
 2. Add the repository for the tools:
-    For Leap 15.5:   
+    For Leap 15.5: 
 	```
 	zypper ar -f https://download.opensuse.org/repositories/systemsmanagement:/Uyuni:/Stable:/ContainerUtils/openSUSE_Leap_15.5/systemsmanagement:Uyuni:Stable:ContainerUtils.repo
 	```
     For Leap Micro 15.5:
-        ```
+    ```
 	zypper ar -f https://download.opensuse.org/repositories/systemsmanagement:/Uyuni:/Stable:/ContainerUtils/openSUSE_Leap_Micro_5.5/systemsmanagement:Uyuni:Stable:ContainerUtils.repo
 	```
     For SLE Micro 5.5:
-        ```
+    ```
 	zypper ar -f https://download.opensuse.org/repositories/systemsmanagement:/Uyuni:/Stable:/ContainerUtils/SLE-Micro55/systemsmanagement:Uyuni:Stable:ContainerUtils.repo
 	```
  
 4. Install the necessary packages:
 	For Leap 15.5:
-        ```
+    ```
 	zypper in uyunictl uyuniadm
+	
 	```
-        For Leap Micro or SLE Micro:
-        ```
-        transactional-update -n pkg install uyunictl uyuniadm && reboot
-        ```
-5. Install the Uyuni server using the 'uyuniadm' tool:
+    For Leap Micro or SLE Micro:
+    ```
+    transactional-update -n pkg install uyunictl uyuniadm && reboot
+    ```
+5. Install the Uyuni server using the 'uyuniadm' tool
 
-Eaample using the Master (development) image of Uyuni:
- ```
-uyuniadm install podman uyuni-container.site.com --ssl-city Anderson --ssl-country US --ssl-state Indiana --tz 'America/Detroit' --image registry.opensuse.org/systemsmanagement/uyuni/master/containers/uyuni/server 
-```
-Example using the latest supported release of Uyuni:
-```
-uyuniadm install podman uyuni-container.site.com --ssl-city Anderson --ssl-country US --ssl-state Indiana --tz 'America/Detroit' --image registry.opensuse.org/uyuni/server
-```
+     Example using the Master (development) image of Uyuni:
+     ```
+     uyuniadm install podman uyuni-container.site.com --ssl-city Anderson --ssl-country US --ssl-state Indiana --tz 'America/Detroit' --image registry.opensuse.org/systemsmanagement/uyuni/master/containers/uyuni/server 
+      ```
+      Example using the latest supported release of Uyuni:
+      ```
+      uyuniadm install podman uyuni-container.site.com --ssl-city Anderson --ssl-country US --ssl-state Indiana --tz 'America/Detroit' --image registry.opensuse.org/uyuni/server
+      ```
 
 5. Log in to the webUI and set your Organization name, login user, and password.  In this example, the user is 'admin' and the password 'susemanager'
 
