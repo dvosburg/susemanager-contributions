@@ -96,7 +96,7 @@ hwinfo --disk | grep -E "Device File:"
 ```
 If you are not sure which device to choose, use the ```lsblk```command to see the name and size of each device. Choose the name that matches with the size of the virtual disk you are looking for.
 
-You can set up the external disk with the ```suma-storage``` command. This creates an XFS partition mounted at /manager_storage and uses it as the location for the database and repositories:
+You can set up the external disk with the ```suma-storage``` command. This creates an XFS partition mounted at ```/manager_storage``` and uses it as the location for the database and repositories:
 ```
 /usr/bin/suma-storage <storage-disk-device> [<database-disk-device>]
 ```
