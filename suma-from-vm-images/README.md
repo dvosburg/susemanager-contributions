@@ -104,6 +104,7 @@ If ```<database-disk-device>```is specified, the given disk device will be set u
 as data base storage (recommended). If omitted, ```<storage-disk-device>``` will
 be used for both channel and data base storage.
 
+#### Optional manual partitioning
 Optionally you can partition and mount the virtual disks at the following locations using YaST Partitioner (yast2 disk).
 
 Storage size values are the absolute minimum. They are suitable only for a small test or demonstration installation, such as a server with only a few clients. Especially ```/var/spacewalk/``` may quickly need more space as more products are added to SUMA. You may consider creating a separate partition for ```/srv``` where Kiwi images
