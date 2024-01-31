@@ -2,7 +2,7 @@
 
 ## What is the VM image?
 
-You will find the minimal images for SUSE Manager 4.3 in various formats.  It includes the underlying OS bits (SLES15 SP4) and the SUSE Manager software current at the time of build.
+You will find the VM images for SUSE Manager 4.3 in various formats.  It includes the underlying OS bits (SLES15 SP4) and the SUSE Manager software current at the time of build.
 Download the appropriate one for your environment.
 
 ### Server requirements
