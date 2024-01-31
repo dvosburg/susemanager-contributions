@@ -120,8 +120,9 @@ are stored if SUSE Manager will be used for image management.
 
 
 ### Network requirements
-By default, the minimal image uses a single-interface DHCP.  This assumes that the specific hostname will be assigned to the MAC address via DHCP.  
-Without a specific assignment, the system will fall back to the name 'localhost'. 
+By default, the VM image uses a single-interface DHCP.  This assumes that the specific hostname will be assigned to the MAC address via DHCP.  
+Without a specific assignment, the system will fall back to the name 'localhost'.
+
 In all cases, this needs to be changed BEFORE setting up the SUSE Manager server.   
  * **FQDN**: Define the FQDN of the SUMA server.  It must be resolvable by the client systems, and should be defined BEFORE completing setup
  - Step 1 - ```hostnamectl set-hostname <<suma.full.fqdn>>```
