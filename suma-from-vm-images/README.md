@@ -109,7 +109,7 @@ are stored if SUSE Manager will be used for image management.
 
 
 
-#### Network requirements
+### Network requirements
 By default, the minimal image uses a single-interface DHCP.  This assumes that the specific hostname will be assigned to the MAC address via DHCP.  
 
 Without a specific assignment, the system will fall back to the name 'localhost'.   
