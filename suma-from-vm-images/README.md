@@ -102,9 +102,9 @@ are stored if SUSE Manager will be used for image management.
 
 | Additional Storage   | Name      | Sizing        | Mount point  |
 | ------------------   | --------- | ------------- | ------------ |
-| Device/partition2    | spacewalk | 250{nbsp}GB   | /var/spacewalk |
-| Device/partition3    | pgsql     | 100{nbsp}GB   | /var/lib/pgsql |
-| Device/partition4    | varcache  | 50{nbsp}GB    | /var/cache   |
+| Device/partition2    | spacewalk | 250 GB        | /var/spacewalk |
+| Device/partition3    | pgsql     | 100 GB        | /var/lib/pgsql |
+| Device/partition4    | varcache  | 50  GB        | /var/cache   |
 
 
 
