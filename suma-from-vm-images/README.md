@@ -15,7 +15,8 @@ SUSE Manager server has the following requirements:
 Additional storage 300GB (minimum)  
 
 ### Create startup file to set the root password
-The SUSE Manager VM image does not setup root or any other user account. User or root authentications need to be setup during first boot. This can be done using either Ignition or Cloud-Init methods.
+The SUSE Manager VM image does not setup root or any other user account. User or root authentications need to be setup during first boot. This can be done using either Ignition or Cloud-Init methods.  Here we will document the Ignition method for accomplishing this. 
+
 #### Ignition method
 Ignition is a provisioning tool that enables you to configure a system according to your specification on the first boot. When the system is booted for the first time, Ignition is loaded as part of an initramfs and searches for a configuration file within a specific directory (on a USB flash disk, or you can provide a URL).
 
