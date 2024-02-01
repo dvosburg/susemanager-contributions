@@ -68,7 +68,7 @@ Define a VM in your chosen virtualization environment with these elements:
 
 * OS Type:  SLES 15 SP4
 * First hard disk: SUMA VM Image file downloaded
-* Second hard drive: 300GB additional disk device
+* Second hard drive: 300GB additional disk device(s)
 * CDROM device pointing to ```suma_ignition.iso```
 * Network adapter on network reachable by client systems
 
