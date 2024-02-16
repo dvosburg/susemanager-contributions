@@ -212,19 +212,22 @@ Here is a basic workflow example for setting up Uyuni in containers for the firs
     ```
 	zypper ar -f https://download.opensuse.org/repositories/systemsmanagement:/Uyuni:/Stable:/ContainerUtils/SLE-Micro55/systemsmanagement:Uyuni:Stable:ContainerUtils.repo
 	```
-You will need to accept the repository signing key for this newly added repository.  
+3. You will need to accept the repository signing key for this newly added repository.  
 
     For Leap 15.5:
+
     ```
     rpm --import https://download.opensuse.org/repositories/systemsmanagement:/Uyuni:/Stable:/ContainerUtils/openSUSE_Leap_15.5/repodata/repomd.xml.key
     ```
 
     For Leap Micro 15.5:
+   
     ```
     transactional-update run 'rpm --import https://download.opensuse.org/repositories/systemsmanagement:/Uyuni:/Stable:/ContainerUtils/openSUSE_Leap_15.5/repodata/repomd.xml.key' && reboot
     ```
 
     For SLE Micro 5.5:
+   
     ```
     transactional-update run 'rpm --import https://download.opensuse.org/repositories/systemsmanagement:/Uyuni:/Stable:/ContainerUtils/SLE-Micro55/repodata/repomd.xml.key' && reboot
     ```
@@ -251,9 +254,9 @@ You will need to accept the repository signing key for this newly added reposito
       mgradm install podman uyuni-container.site.com --ssl-city Anderson --ssl-country US --ssl-state Indiana --tz 'America/Detroit' --image registry.opensuse.org/uyuni/server
       ```
 
-5. Log in to the webUI and set your Organization name, login user, and password.  In this example, the user is 'admin' and the password 'susemanager'
+6. Log in to the webUI and set your Organization name, login user, and password.  In this example, the user is 'admin' and the password 'susemanager'
 
-6. Add some channels that might interest you.  These are examples that do not require special SCC credentials:
+7. Add some channels that might interest you.  These are examples that do not require special SCC credentials:
 
 Leap Micro 5.5:
 ```
@@ -269,17 +272,17 @@ mgrctl exec 'spacewalk-common-channels -u admin -p susemanager ubuntu-2204-pool-
 ```
 Give your server some time to sync all the channels, and check to ensure they completed by looking at the Software list in the webUI.  
 
-7. Create Activation Keys in the webUI to align with the channels you created.  Best practice for simplicity is to create them with labels to match the distribution:
+8. Create Activation Keys in the webUI to align with the channels you created.  Best practice for simplicity is to create them with labels to match the distribution:
 ```
 1-leapmicro55
 1-almalinux9
 1-ubuntu2204
 ```
-8. Create bootstrap scripts to register systems to your Uyuni.  An example is below:
+9. Create bootstrap scripts to register systems to your Uyuni.  An example is below:
 ```
 mgrctl exec 'mgr-bootstrap  --script=bootstrap-ubuntu2204.sh  --activation-keys=1-ubuntu2204 --ssl-cert=/srv/www/htdocs/pub/RHN-ORG-TRUSTED-SSL-CERT'
 ```
-9. Register systems with Uyuni using the bootstrap scripts.  You can find the listing with a web browser:
+10. Register systems with Uyuni using the bootstrap scripts.  You can find the listing with a web browser:
 https://<<uyuni_server_fqdn>>/pub/bootstrap
 
 Copy the URL link desired from there, and run it from a root terminal on the client you wish to register.  Here is an example:
