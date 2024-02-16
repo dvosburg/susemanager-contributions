@@ -213,13 +213,17 @@ Here is a basic workflow example for setting up Uyuni in containers for the firs
 	zypper ar -f https://download.opensuse.org/repositories/systemsmanagement:/Uyuni:/Stable:/ContainerUtils/SLE-Micro55/systemsmanagement:Uyuni:Stable:ContainerUtils.repo
 	```
 You will need to accept the repository signing key for this newly added repository.  
+
     For Leap 15.5:
-    ```rpm --import https://download.opensuse.org/repositories/systemsmanagement:/Uyuni:/Stable:/ContainerUtils/openSUSE_Leap_15.5/repodata/repomd.xml.key
     ```
+    rpm --import https://download.opensuse.org/repositories/systemsmanagement:/Uyuni:/Stable:/ContainerUtils/openSUSE_Leap_15.5/repodata/repomd.xml.key
+    ```
+
     For Leap Micro 15.5:
     ```
     transactional-update run 'rpm --import https://download.opensuse.org/repositories/systemsmanagement:/Uyuni:/Stable:/ContainerUtils/openSUSE_Leap_15.5/repodata/repomd.xml.key' && reboot
     ```
+
     For SLE Micro 5.5:
     ```
     transactional-update run 'rpm --import https://download.opensuse.org/repositories/systemsmanagement:/Uyuni:/Stable:/ContainerUtils/SLE-Micro55/repodata/repomd.xml.key' && reboot
