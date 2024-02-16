@@ -2,7 +2,7 @@
 
 ### System Requirements
 
-Uyuni containerized is currently a single system container, running on a dedicated host using podman. There are numerous benefits to this - with more to come. 
+Uyuni containerized is currently a single system container, running on a dedicated host using podman. There are numerous benefits to this - with more to come.
 In future this will expand to multiple containers and be offered to run on k8s.  Then we can offer modular scalability and resilience
 
 #### Server requirements
@@ -12,13 +12,13 @@ openSUSE Leap 15.5, Leap Micro 5.5, SLE Micro 5.5
 16 GB RAM (minimum)
 10GB root volume storage (minimum)
 
-Additional storage 200GB (minimum) mounted on '/var/lib/containers/storage' 
+Additional storage 200GB (minimum) mounted on '/var/lib/containers/storage'
 
 Uyuni server installation will map the volumes for persistent storage there by default.
 
 
 #### Network requirements
-The documented Uyuni requirements for networking are similar to the standard install and can be found here: 
+The documented Uyuni requirements for networking are similar to the standard install and can be found here:
 https://www.uyuni-project.org/uyuni-docs/en/uyuni/installation-and-upgrade/network-requirements.html
 
 Exception is noted here:
@@ -65,7 +65,7 @@ Usage:
 
 Here is an example:
 ```
-mgradm install podman uyuni-container.site.com --ssl-city Anderson --ssl-country US --ssl-state Indiana --tz 'America/Detroit' --image registry.opensuse.org/systemsmanagement/uyuni/master/containers/uyuni/server 
+mgradm install podman uyuni-container.site.com --ssl-city Anderson --ssl-country US --ssl-state Indiana --tz 'America/Detroit' --image registry.opensuse.org/systemsmanagement/uyuni/master/containers/uyuni/server
 ```
 The current uyuni containerized images are on registry.opensuse.org:
 ```
@@ -200,7 +200,7 @@ Here is a basic workflow example for setting up Uyuni in containers for the firs
 
 1. Install the OS and partition the disk as required.
 2. Add the repository for the tools:
-    For Leap 15.5: 
+    For Leap 15.5:
 	```
 	zypper ar -f https://download.opensuse.org/repositories/systemsmanagement:/Uyuni:/Stable:/ContainerUtils/openSUSE_Leap_15.5/systemsmanagement:Uyuni:Stable:ContainerUtils.repo
 	```
@@ -212,13 +212,25 @@ Here is a basic workflow example for setting up Uyuni in containers for the firs
     ```
 	zypper ar -f https://download.opensuse.org/repositories/systemsmanagement:/Uyuni:/Stable:/ContainerUtils/SLE-Micro55/systemsmanagement:Uyuni:Stable:ContainerUtils.repo
 	```
- 
+You will need to accept the repository signing key for this newly added repository.  
+    For Leap 15.5:
+    ```rpm --import https://download.opensuse.org/repositories/systemsmanagement:/Uyuni:/Stable:/ContainerUtils/openSUSE_Leap_15.5/repodata/repomd.xml.key
+    ```
+    For Leap Micro 15.5:
+    ```
+    transactional-update run 'rpm --import https://download.opensuse.org/repositories/systemsmanagement:/Uyuni:/Stable:/ContainerUtils/openSUSE_Leap_15.5/repodata/repomd.xml.key' && reboot
+    ```
+    For SLE Micro 5.5:
+    ```
+    transactional-update run 'rpm --import https://download.opensuse.org/repositories/systemsmanagement:/Uyuni:/Stable:/ContainerUtils/SLE-Micro55/repodata/repomd.xml.key' && reboot
+    ```
+
 4. Install the necessary packages:
 
 	For Leap 15.5:
     ```
 	zypper in mgrctl mgradm
-	
+
 	```
     For Leap Micro or SLE Micro:
     ```
@@ -228,7 +240,7 @@ Here is a basic workflow example for setting up Uyuni in containers for the firs
 
      Example using the Master (development) image of Uyuni:
      ```
-     mgradm install podman uyuni-container.site.com --ssl-city Anderson --ssl-country US --ssl-state Indiana --tz 'America/Detroit' --image registry.opensuse.org/systemsmanagement/uyuni/master/containers/uyuni/server 
+     mgradm install podman uyuni-container.site.com --ssl-city Anderson --ssl-country US --ssl-state Indiana --tz 'America/Detroit' --image registry.opensuse.org/systemsmanagement/uyuni/master/containers/uyuni/server
       ```
       Example using the latest supported release of Uyuni:
       ```
@@ -239,23 +251,23 @@ Here is a basic workflow example for setting up Uyuni in containers for the firs
 
 6. Add some channels that might interest you.  These are examples that do not require special SCC credentials:
 
-Leap Micro 5.4:
+Leap Micro 5.5:
 ```
-mgrctl exec 'spacewalk-common-channels -u admin -p susemanager -a x86_64 opensuse_micro5_4*' 
+mgrctl exec 'spacewalk-common-channels -u admin -p susemanager -a x86_64 opensuse_micro5_5*'
 ```
 AlmaLinux9:
 ```
-mgrctl exec 'spacewalk-common-channels -u admin -p susemanager -a x86_64 almalinux9 almalinux9-uyuni-client almalinux9-appstream' 
+mgrctl exec 'spacewalk-common-channels -u admin -p susemanager -a x86_64 almalinux9 almalinux9-uyuni-client almalinux9-appstream'
 ```
 Ubuntu 22.04:
 ```
-mgrctl exec 'spacewalk-common-channels -u admin -p susemanager ubuntu-2204-pool-amd64-uyuni ubuntu-2204-amd64-main-uyuni ubuntu-2204-amd64-main-updates-uyuni ubuntu-2204-amd64-main-security-uyuni ubuntu-2204-amd64-uyuni-client ubuntu-2204-amd64-main-backports-uyuni' 
+mgrctl exec 'spacewalk-common-channels -u admin -p susemanager ubuntu-2204-pool-amd64-uyuni ubuntu-2204-amd64-main-uyuni ubuntu-2204-amd64-main-updates-uyuni ubuntu-2204-amd64-main-security-uyuni ubuntu-2204-amd64-uyuni-client ubuntu-2204-amd64-main-backports-uyuni'
 ```
 Give your server some time to sync all the channels, and check to ensure they completed by looking at the Software list in the webUI.  
 
 7. Create Activation Keys in the webUI to align with the channels you created.  Best practice for simplicity is to create them with labels to match the distribution:
 ```
-1-leapmicro54
+1-leapmicro55
 1-almalinux9
 1-ubuntu2204
 ```
