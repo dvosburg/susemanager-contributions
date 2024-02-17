@@ -287,7 +287,7 @@ mgrctl exec 'mgr-bootstrap  --script=bootstrap-ubuntu2204.sh  --activation-keys=
 https://uyuni.server.fqdn/pub/bootstrap
 ```
 
-Copy the URL link desired from there, and run it from a root terminal on the client you wish to register.  Here is an example:
+Copy the URL link to the specific bootstrap script desired from there, and run it from a root terminal on the client you wish to register.  Here is an example:
 ```
 curl -Sks http://10.173.1.46/pub/bootstrap/bootstrap-ubuntu2204.sh | /bin/bash
 ```
