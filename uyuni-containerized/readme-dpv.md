@@ -284,7 +284,7 @@ mgrctl exec 'mgr-bootstrap  --script=bootstrap-ubuntu2204.sh  --activation-keys=
 ```
 10. Register systems with Uyuni using the bootstrap scripts.  You can find the listing with a web browser, substituting your own server FQDN:
 ```
-https://uyuni.server.fqdn>>/pub/bootstrap
+https://uyuni.server.fqdn/pub/bootstrap
 ```
 
 Copy the URL link desired from there, and run it from a root terminal on the client you wish to register.  Here is an example:
