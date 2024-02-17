@@ -282,8 +282,10 @@ Give your server some time to sync all the channels, and check to ensure they co
 ```
 mgrctl exec 'mgr-bootstrap  --script=bootstrap-ubuntu2204.sh  --activation-keys=1-ubuntu2204 --ssl-cert=/srv/www/htdocs/pub/RHN-ORG-TRUSTED-SSL-CERT'
 ```
-10. Register systems with Uyuni using the bootstrap scripts.  You can find the listing with a web browser:
-https://<<uyuni_server_fqdn>>/pub/bootstrap
+10. Register systems with Uyuni using the bootstrap scripts.  You can find the listing with a web browser, substituting your own server FQDN:
+```
+https://uyuni.server.fqdn>>/pub/bootstrap
+```
 
 Copy the URL link desired from there, and run it from a root terminal on the client you wish to register.  Here is an example:
 ```
