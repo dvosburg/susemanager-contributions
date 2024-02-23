@@ -224,14 +224,14 @@ Here is a basic workflow example for setting up Uyuni in containers for the firs
    
     ```
     curl -Sks https://download.opensuse.org/repositories/systemsmanagement:/Uyuni:/Stable:/ContainerUtils/openSUSE_Leap_15.5/repodata/repomd.xml.key > /tmp/uyuni-container-tools.key
-    transactional-update run 'rpm --import /tmp/uyuni-container-tools.key' && reboot
+    transactional-update run rpm --import /tmp/uyuni-container-tools.key && reboot
     ```
 
     For SLE Micro 5.5:
    
     ```
     curl -Sks https://download.opensuse.org/repositories/systemsmanagement:/Uyuni:/Stable:/ContainerUtils/SLE-Micro55/repodata/repomd.xml.key > /tmp/uyuni-container-tools.key
-    transactional-update run 'rpm --import /tmp/uyuni-container-tools.key' && reboot
+    transactional-update run rpm --import /tmp/uyuni-container-tools.key && reboot
     ```
 
 4. Install the necessary packages:
