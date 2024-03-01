@@ -1,0 +1,26 @@
+<network xmlns:dnsmasq="http://libvirt.org/schemas/network/dnsmasq/1.0">
+  <name>branch24</name>
+  <uuid>640df6b2-2782-4e3f-8c61-a89100afc95d</uuid>
+  <forward mode="nat">
+    <nat>
+      <port start="1024" end="65535"/>
+    </nat>
+  </forward>
+  <bridge name="virbr4" stp="on" delay="0"/>
+  <mac address="52:54:00:b1:b4:69"/>
+  <domain name="branch24.site.com"/>
+  <dns>
+    <forwarder addr="10.173.1.1"/>
+  </dns>
+  <ip address="10.24.24.1" netmask="255.255.255.0">
+    <dhcp>
+      <range start="10.24.24.10" end="10.24.24.99"/>
+      <bootp file="pxelinux.0" server="10.24.24.100"/>
+    </dhcp>
+  </ip>
+  <dnsmasq:options>
+    <dnsmasq:option value="#"/>
+    <dnsmasq:option value="dhcp-match=set:efi-x64-pxe,option:client-arch,7"/>
+    <dnsmasq:option value="dhcp-boot=tag:efi-x64-pxe,grub/shim.efi,,10.24.24.100"/>
+  </dnsmasq:options>
+</network>
