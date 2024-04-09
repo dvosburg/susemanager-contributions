@@ -17,7 +17,6 @@ rebootmgr_strategy_change:
     - name: /etc/rebootmgr.conf
     - key_values:
        strategy: 'instantly'
-       window-duration: '23h59m'
     - separator: '='
     - uncomment: '# '
     - append_if_not_found: True
