@@ -1,7 +1,9 @@
-copy_file_to_etc_if_not_there:
+copy_files_to_etc_if_not_there:
   file.copy:
     - name: /etc/transactional-update.conf
     - source: /usr/etc/transactional-update.conf
+    - name: /etc/tukit.conf
+    - source: /usr/etc/tukit.conf
     
 transactional_update_set_rebootmethod_rebootmgr:
   file.keyvalue:
@@ -29,3 +31,11 @@ append_to_tukit_config:
     - separator: '='
     - uncomment: '# '
     - append_if_not_found: True
+
+reboot-after-changes:
+   cmd.run:
+    - onchanges: 
+      - file: /etc/tukit.conf
+      - file: /etc/transactional-update.conf
+      - file: /etc/rebootmgr.conf
+    - name: 'rebootmgrctl reboot now'
