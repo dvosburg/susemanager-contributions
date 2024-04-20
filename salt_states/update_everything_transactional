@@ -68,6 +68,6 @@ kernel_live_version:
 
 
 
-reboot-after-changes:
+reboot_after_update_changes:
    cmd.run:
-    - name: 'rebootmgrctl reboot'
+    - name: 'rebootmgrctl reboot now'
