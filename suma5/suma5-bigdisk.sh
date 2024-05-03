@@ -15,12 +15,16 @@
 # You should have received a copy of the GNU General Public License
 
 usage() {
+    echo "This script creates and mounts a partition for SUMA container storage"
+    echo "on the device you specify"
+    echo
     echo "Usage: $0 <storage-disk-device>"
     echo
-    echo "<storage-disk-device> will"
-    echo "be used for both file and data base storage."
+    echo "<storage-disk-device> will be used for all container storage."
     echo
+    echo "Use 'fdisk -l' to list available storage disk devices"
 }
+
 
 case "$1" in
   "-h"|"--help"|"")
