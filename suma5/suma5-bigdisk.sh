@@ -33,22 +33,38 @@ case "$1" in
     ;;
 esac
 export device=$1
+
+# Check to see if this is NVMe or not
 if [[ $device == *nvme* ]]; then
   partition=${device}p1
   else
   partition=${device}1
 fi
 echo $partition
+
+# Make a new partition table, and stop if disk is in use
 parted -s $device mklabel GPT
 if [ $? != 0 ]; then
      echo "Creating new GPT label failed.  Is disk already in use?"
      echo "Aborting storage provisioning."
      exit
 fi
+
+# Make a new partition and format it as xfs
 parted -s $device mkpart primary 2048s 100%
 mkfs.xfs -f $partition &>/dev/null 
+
+# Create the mountpoint directory if not already present
 mkdir -p /var/lib/containers/storage/volumes
+
+# Find the UUID of our partition
 export uuid=$(blkid -s UUID -o value $partition)
+
+# Mount the partition using the UUID
 mount UUID=$uuid /var/lib/containers/storage/volumes
+
+# Create /etc/fstab entry so it is mounted on boot
 echo "UUID=$uuid /var/lib/containers/storage/volumes xfs defaults,nofail 1 2" >> /etc/fstab
+
+# Finish with a nice message
 echo "SUSE Manager storage is now provisioned to use $partition"
