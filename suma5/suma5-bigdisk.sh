@@ -32,15 +32,13 @@ case "$1" in
     exit 0
     ;;
 esac
-
 export device=$1
-partition=${device}p1
-    if [ -e $partition ]; then
-        echo $partition
-        else
-        partition=${device}1
-        echo $partition
-    fi
+if [[ $device == *nvme* ]]; then
+  partition=${device}p1
+  else
+  partition=${device}1
+fi
+echo $partition
 parted -s $device mklabel GPT
 if [ $? != 0 ]; then
      echo "Creating new GPT label failed.  Is disk already in use?"
