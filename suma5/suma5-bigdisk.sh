@@ -68,3 +68,4 @@ echo "UUID=$uuid /var/lib/containers/storage/volumes xfs defaults,nofail 1 2" >>
 
 # Finish with a nice message
 echo "SUSE Manager storage is now provisioned to use $partition"
+echo "mounted on '/var/lib/containers/storage/volumes'"
