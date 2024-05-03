@@ -42,6 +42,11 @@ partition=${device}p1
         echo $partition
     fi
 parted -s $device mklabel GPT
+if [ $? != 0 ]; then
+     echo "Creating new GPT label failed.  Is disk already in use?"
+     echo "Aborting storage provisioning."
+     exit
+fi
 parted -s $device mkpart primary 2048s 100%
 mkfs.xfs -f $partition &>/dev/null 
 mkdir -p /var/lib/containers/storage/volumes
