@@ -1,3 +1,3 @@
 #!/bin/bash
-curl -Sks https://raw.githubusercontent.com/dvosburg/susemanager-contributions/master/scripts/machine-id-refresh.sh > /usr/local/bin/machine-id-refresh.sh
-chmod +x /usr/local/bin/*.sh
+curl -Sks https://github.com/dvosburg/susemanager-contributions/raw/master/suma5/suma5-bigdisk.sh > /usr/local/bin/suma5-bigdisk.sh
+chmod +x /usr/local/bin/suma5-bigdisk.sh
