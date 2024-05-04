@@ -1,0 +1,4 @@
+renew_certs:
+    cmd.run:
+        - name: 'certbot renew'
+        - shell: '/bin/bash'
