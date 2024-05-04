@@ -1,0 +1,7 @@
+run_scheduler:
+  cmd.run:
+    - name: |
+        source /var/phaseiienv/bin/activate
+        python -m bemani.utils.scheduler "$@" -c /root/phaseiiconfig/server.yaml
+        deactivate
+    - shell: /bin/bash
