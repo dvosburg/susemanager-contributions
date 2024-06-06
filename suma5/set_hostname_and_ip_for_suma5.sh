@@ -1,7 +1,7 @@
 #!/bin/bash
 hostnamectl set-hostname suma5-server-image.site.com
 echo "Hostname set to suma5-server-image.site.com"
-nmcli device modify eth0 \
+nmcli connection modify "Wired connection 1" \
   ipv4.method manual \
   ipv4.addresses 10.173.1.50/24 \
   ipv4.gateway 10.173.1.1 \
