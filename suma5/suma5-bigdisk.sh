@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright (c) 2019 SUSE Linux GmbH
+# Copyright (c) 2024 SUSE Linux GmbH
 #
 #
 # This script is free software: you can redistribute it and/or
@@ -42,29 +42,39 @@ if [[ $device == *nvme* ]]; then
 fi
 echo $partition
 
-# Make a new partition table, and stop if disk is in use
-parted -s $device mklabel GPT
-if [ $? != 0 ]; then
-     echo "Creating new GPT label failed.  Is disk already in use?"
-     echo "Aborting storage provisioning."
-     exit
-fi
-
-# Make a new partition and format it as xfs
-parted -s $device mkpart primary 2048s 100%
-mkfs.xfs -f $partition &>/dev/null 
+# Define the mountpoint
+export mountpoint='/var/lib/containers/storage/volumes'
 
 # Create the mountpoint directory if not already present
-mkdir -p /var/lib/containers/storage/volumes
+mkdir -p $mountpoint
+
+partitionid=${partition:5}
+
+if grep -qs $partitionid /proc/partitions; then
+   echo  $partitionid
+   echo "Skipping partition creation since $partition already exists"
+else
+   parted -s $device mklabel GPT
+   parted -s $device mkpart primary 2048s 100%
+   mkfs.xfs -f $partition &>/dev/null
+fi
 
 # Find the UUID of our partition
 export uuid=$(blkid -s UUID -o value $partition)
 
 # Mount the partition using the UUID
-mount UUID=$uuid /var/lib/containers/storage/volumes
+if grep -qs $partition /proc/mounts; then
+   echo "Skipping partition mount since $partition is already mounted"
+else
+   mount UUID=$uuid $mountpoint
+fi
 
 # Create /etc/fstab entry so it is mounted on boot
-echo "UUID=$uuid /var/lib/containers/storage/volumes xfs defaults,nofail 1 2" >> /etc/fstab
+if grep -qs $mountpoint /etc/fstab; then
+   echo "$partition already set to be mounted at $mountpoint in /etc/fstab"
+else
+   echo "UUID=$uuid $mountpoint xfs defaults,nofail 1 2" >> /etc/fstab
+fi
 
 # Finish with a nice message
 echo "SUSE Manager storage is now provisioned to use $partition"
