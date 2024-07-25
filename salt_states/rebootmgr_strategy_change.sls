@@ -8,6 +8,11 @@ copy_transactional_update_conf_to_etc_if_not_there:
     - name: /etc/tukit.conf
     - source: /usr/etc/tukit.conf
 
+copy_rebootmgr_conf_to_etc_if_not_there:
+   file.copy:
+    - name: /etc/rebootmgr.conf
+    - source: /usr/etc/rebootmgr.conf
+
 transactional_update_set_rebootmethod_rebootmgr:
   file.keyvalue:
     - name: /etc/transactional-update.conf
