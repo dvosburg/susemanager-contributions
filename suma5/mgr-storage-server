@@ -17,7 +17,7 @@
 # You should have received a copy of the GNU General Public License along
 # with this program
 
-. /usr/lib/susemanager/susemanager-storage-setup-functions.sh || exit 1
+. /usr/local/bin/susemanager-storage-setup-functions.sh || exit 1
 
 usage() {
     echo "Usage: $0 <storage-disk-device> [<database-disk-device>]"
