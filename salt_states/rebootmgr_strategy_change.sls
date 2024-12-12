@@ -8,10 +8,13 @@ copy_transactional_update_conf_to_etc_if_not_there:
     - name: /etc/tukit.conf
     - source: /usr/etc/tukit.conf
 
+{%- if grains['osfullname'] == 'SL-Micro' and grains['osmajorrelease'] = 6 %}
 copy_rebootmgr_conf_to_etc_if_not_there:
    file.copy:
     - name: /etc/rebootmgr.conf
     - source: /usr/etc/rebootmgr.conf
+{%- else %}
+{%- endif %}
 
 transactional_update_set_rebootmethod_rebootmgr:
   file.keyvalue:
