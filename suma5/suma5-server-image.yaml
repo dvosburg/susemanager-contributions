@@ -25,7 +25,7 @@ admin:
   lastName: Admin
   email: admin@site.com
 
-# Pull Policy settings - keep the one from the image
+# Pull Policy settings - keep the one from the installed RPM
 pullPolicy:
   Never
 
