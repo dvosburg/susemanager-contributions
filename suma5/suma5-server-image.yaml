@@ -30,7 +30,7 @@ pullPolicy:
   Never
 
 image:
-  "localhost/suse/manager/5.0/x86_64/server"
+  "registry.suse.com/suse/manager/5.0/x86_64/server"
 
 tag:
   "5.0.3"
