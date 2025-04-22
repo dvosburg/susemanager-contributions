@@ -10,10 +10,11 @@ copy_transactional_update_conf_to_etc_if_not_there:
 
 {%- if grains['osfullname'] == 'SL-Micro' and grains['osmajorrelease'] == 6 %}
 copy_rebootmgr_conf_to_etc_if_not_there:
-   file.copy:
+  file.copy:
     - name: /etc/rebootmgr.conf
     - source: /usr/etc/rebootmgr.conf
-{%- else %}
+      
+{%- else %} 
 {%- endif %}
 
 transactional_update_set_rebootmethod_rebootmgr:
