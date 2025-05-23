@@ -5,5 +5,5 @@
 If you want this in '/usr/local/bin' you can issue this command from your client:
 
 ```
-curl -Sks https://raw.githubusercontent.com/dvosburg/susemanager-contributions/master/suma5/get-suma-script.sh | /bin/bash
+curl -Sks https://raw.githubusercontent.com/dvosburg/mlm-contributions/master/suma5/get-suma-script.sh | /bin/bash
 ```
